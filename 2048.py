@@ -49,3 +49,13 @@ def status():
 
     return "Game over!"
 
+
+def user():
+    input_list = ['A', 'S', 'D', 'W', 'a', 's', 'd', 'w']
+    user_input = input()
+    while user_input not in input_list:
+        print("You can only select 'A', 'S', 'D' or 'W': ")
+        user_input = input()
+
+    return user_input.lower()
+
