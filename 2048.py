@@ -25,29 +25,29 @@ def add_new_2():
     table[row][column] = 2
 
 
-def status():
+def game_over():
     for i in range(0, 4):
         for j in range(0, 4):
             if table[i][j] == 2048:
-                return "You won!"
+                return False
             
     for i in range(0, 4):
         for j in range(0, 4):
             if table[i][j] == 0:
-                return "Game not over yet..."
+                return False
 
     for i in range(0, 4):
         for j in range(1, 4):
             if table[i][j - 1] == table[i][j]:
-                return "Game not over yet..."
+                return False
 
     for i in range(1, 4):
         for j in range(0, 4):
 
             if table[i - 1][j] == table[i][j]:
-                return "Game not over yet..."
+                return False
 
-    return "Game over!"
+    return True
 
 
 def user():
