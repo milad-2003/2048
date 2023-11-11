@@ -9,10 +9,12 @@ table = [
 ]
 
 
-print("""Press 'A' to MOVE LEFT
+print("""
+Press 'A' to MOVE LEFT
 Press 'S' to MOVE DOWN
 Press 'D' to MOVE RIGHT
-Press 'W' to MOVE UP""")
+Press 'W' to MOVE UP
+""")
 
 
 def add_new_2(arr):
@@ -131,3 +133,24 @@ def move_up(arr):
                 zeros_to_bottom(arr, i)
 
 
+while not game_over(table):
+
+    add_new_2(table)
+
+    for i in table:
+        for j in i:
+            print(j, "\t", end="")
+        print("")
+    print("\n================================\n")
+        
+    match user():
+        case "a":
+            move_left(table)
+        case "s":
+            move_down(table)
+        case "d":
+            move_right(table)
+        case "w":
+            move_up(table)
+
+print("Game over!")
