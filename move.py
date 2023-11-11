@@ -32,41 +32,53 @@ def zeros_to_top(arr, column):
 
 
 def right(arr):
+    score = 0
     for i in range(len(arr)):
         zeros_to_left(arr[i])
         for j in range(len(arr) - 1, 0, -1):
             if arr[i][j] == arr[i][j - 1]:
                 arr[i][j] *= 2
+                score += arr[i][j]
                 arr[i][j - 1] = 0
                 zeros_to_left(arr[i])
+    return score
 
 
 def left(arr):
+    score = 0
     for i in range(len(arr)):
         zeros_to_right(arr[i])
         for j in range(len(arr) - 1):
             if arr[i][j] == arr[i][j + 1]:
                 arr[i][j] *= 2
+                score += arr[i][j]
                 arr[i][j + 1] = 0
                 zeros_to_right(arr[i])
+    return score
 
 
 def down(arr):
+    score = 0
     for i in range(len(arr)):
         zeros_to_top(arr, i)
         for j in range(len(arr) - 1, 0, -1):
             if arr[j][i] == arr[j - 1][i]:
                 arr[j][i] *= 2
+                score += arr[j][i]
                 arr[j - 1][i] = 0
                 zeros_to_top(arr, i)
+    return score
 
 
 def up(arr):
+    score = 0
     for i in range(len(arr)):
         zeros_to_bottom(arr, i)
         for j in range(len(arr) - 1):
             if arr[j][i] == arr[j + 1][i]:
                 arr[j][i] *= 2
+                score += arr[j][i]
                 arr[j + 1][i] = 0
                 zeros_to_bottom(arr, i)
+    return score
 

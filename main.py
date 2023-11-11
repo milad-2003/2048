@@ -9,6 +9,8 @@ table = [
     [0, 0, 0, 0]
 ]
 
+score = 0
+
 
 print("""
 Press 'A' to MOVE LEFT
@@ -65,20 +67,25 @@ while not game_over(table):
 
     add_new_2(table)
 
+    print(f"Score: {score}")
+
     for i in table:
+        print("\n--------------------------------")
         for j in i:
-            print(j, "\t", end="")
-        print("")
+            if j:
+                print(j, "\t", end="")
+            else:
+                print("", "\t", end="")
     print("\n================================\n")
         
     match user():
         case "a":
-            move.left(table)
+            score += move.left(table)
         case "s":
-            move.down(table)
+            score += move.down(table)
         case "d":
-            move.right(table)
+            score += move.right(table)
         case "w":
-            move.up(table)
+            score += move.up(table)
 
-print("Game over!")
+print(f"Game over!\nScore: {score}")
