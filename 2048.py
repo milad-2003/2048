@@ -15,14 +15,17 @@ Press 'D' to MOVE RIGHT
 Press 'W' to MOVE UP""")
 
 
-def add_new_2():
-    row = random.randint(0, 3)
-    column = random.randint(0, 3)
-    while 0 not in table[row]:
-        row = random.randint(0, 3)
-    while table[row][column] != 0:
-        column = random.randint(0, 3)
-    table[row][column] = 2
+def add_new_2(arr):
+    for i in range(len(arr)):
+        if 0 in arr[i]:
+            row = random.randint(0, 3)
+            column = random.randint(0, 3)
+            while 0 not in arr[row]:
+                row = random.randint(0, 3)
+            while arr[row][column] != 0:
+                column = random.randint(0, 3)
+            arr[row][column] = 2
+            break
 
 
 def game_over(arr):
