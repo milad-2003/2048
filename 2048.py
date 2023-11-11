@@ -59,3 +59,38 @@ def user():
 
     return user_input.lower()
 
+
+def zeros_to_right(arr):
+    number_of_zeros = arr.count(0)
+    for i in range(0, number_of_zeros):
+        arr.remove(0)
+        arr.append(0)
+
+
+def zeros_to_left(arr):
+    number_of_zeros = arr.count(0)
+    for i in range(0, number_of_zeros):
+        arr.remove(0)
+    for i in range(0, number_of_zeros):
+        arr.insert(0, 0)
+
+
+def zeros_to_bottom(arr):
+    for i in range(len(arr)):
+        temp = []
+        for j in range(len(arr)):
+            temp.append(arr[j][i])
+        zeros_to_right(temp)
+        for j in range(len(arr)):
+            arr[j][i] = temp[j]
+    
+
+def zeros_to_top(arr):
+    for i in range(len(arr)):
+        temp = []
+        for j in range(len(arr)):
+            temp.append(arr[j][i])
+        zeros_to_left(temp)
+        for j in range(len(arr)):
+            arr[j][i] = temp[j]
+
