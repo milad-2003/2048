@@ -1,4 +1,5 @@
 from random import randint
+from msvcrt import getch
 import move
 
 
@@ -17,6 +18,7 @@ Press 'A' to MOVE LEFT
 Press 'S' to MOVE DOWN
 Press 'D' to MOVE RIGHT
 Press 'W' to MOVE UP
+Press 'Q' to exit
 """)
 
 
@@ -54,11 +56,11 @@ def game_over(arr):
 
 
 def user():
-    input_list = ['A', 'S', 'D', 'W', 'a', 's', 'd', 'w']
-    user_input = input()
+    input_list = ['A', 'S', 'D', 'W', 'Q', 'a', 's', 'd', 'w', 'q']
+    user_input = str(getch())[2]
     while user_input not in input_list:
         print("You can only select 'A', 'S', 'D' or 'W': ")
-        user_input = input()
+        user_input = str(getch())[2]
 
     return user_input.lower()
 
@@ -87,5 +89,7 @@ while not game_over(table):
             score += move.right(table)
         case "w":
             score += move.up(table)
+        case "q":
+            break
 
 print(f"Game over!\nScore: {score}")
