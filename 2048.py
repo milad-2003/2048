@@ -25,26 +25,21 @@ def add_new_2():
     table[row][column] = 2
 
 
-def game_over():
+def game_over(arr):
     for i in range(0, 4):
         for j in range(0, 4):
-            if table[i][j] == 2048:
-                return False
-            
-    for i in range(0, 4):
-        for j in range(0, 4):
-            if table[i][j] == 0:
+            if arr[i][j] == 0:
                 return False
 
     for i in range(0, 4):
         for j in range(1, 4):
-            if table[i][j - 1] == table[i][j]:
+            if arr[i][j - 1] == arr[i][j]:
                 return False
 
     for i in range(1, 4):
         for j in range(0, 4):
 
-            if table[i - 1][j] == table[i][j]:
+            if arr[i - 1][j] == arr[i][j]:
                 return False
 
     return True
