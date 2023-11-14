@@ -10,6 +10,8 @@ table = [
     [0, 0, 0, 0]
 ]
 
+table_copy = []
+
 score = 0
 
 
@@ -59,15 +61,27 @@ def user():
     input_list = ['A', 'S', 'D', 'W', 'Q', 'a', 's', 'd', 'w', 'q']
     user_input = str(getch())[2]
     while user_input not in input_list:
-        print("You can only select 'A', 'S', 'D' or 'W': ")
+        print("You can only select 'A', 'S', 'D' or 'W': \nPress 'Q' to exit: ")
         user_input = str(getch())[2]
 
     return user_input.lower()
 
 
+def copy(arr):
+    new_arr = []
+    for i in range(len(arr)):
+        temp = []
+        for j in range(len(arr)):
+            temp.append(arr[i][j])
+        new_arr.append(temp)
+    
+    return new_arr
+
+
 while not game_over(table):
 
-    add_new_2(table)
+    if table != table_copy:
+        add_new_2(table)
 
     print(f"Score: {score}")
 
@@ -79,7 +93,10 @@ while not game_over(table):
             else:
                 print("", "\t", end="")
     print("\n================================\n")
-        
+    
+    # Making a copy of the table to know if it was changed in the next iteration
+    table_copy = copy(table)
+
     match user():
         case "a":
             score += move.left(table)
