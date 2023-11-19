@@ -1,6 +1,7 @@
 from random import randint
 from msvcrt import getch
 import move
+from os import system
 
 
 table = [
@@ -82,6 +83,8 @@ while not game_over(table):
 
     if table != table_copy:
         add_new_2(table)
+
+    system("cls")
 
     print(f"Score: {score}")
 
