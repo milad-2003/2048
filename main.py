@@ -1,7 +1,8 @@
 from random import randint
 from msvcrt import getch
 import move
-from os import system
+from os import system as command
+from platform import system as os
 
 
 table = [
@@ -14,15 +15,6 @@ table = [
 table_copy = []
 
 score = 0
-
-
-print("""
-Press 'A' to MOVE LEFT
-Press 'S' to MOVE DOWN
-Press 'D' to MOVE RIGHT
-Press 'W' to MOVE UP
-Press 'Q' to exit
-""")
 
 
 def add_new_2(arr):
@@ -84,7 +76,15 @@ while not game_over(table):
     if table != table_copy:
         add_new_2(table)
 
-    system("cls")
+    if os() == "Windows":
+        command("cls")
+    else:
+        command("clear")
+    
+    print("""
+Press 'A', 'S', 'D' or 'W' to move
+Press 'Q' to exit
+""")
 
     print(f"Score: {score}")
 
